@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    container_name: my_postgis
+    restart: always #restart the container if it stops
+    image: postgis/postgis #use the postgis image    
+    env_file:
+      - .env #load the environment variables from the .env file
+    ports:
+      - "5432:5432" #expose the port to the host machine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data #store the data in a volume
